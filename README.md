@@ -29,3 +29,4 @@ The code has been tested on:
 ### Create a Conda Environment
 ```bash
 conda create -n StyleGallery python=3.10
+conda activate StyleGallery
