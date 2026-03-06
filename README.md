@@ -33,8 +33,9 @@ conda create -n StyleGallery python=3.10
 conda activate StyleGallery
 
 # install dependencies with pip
-# for Linux and Windows users
 pip install -r requirements.txt
 ```
 
 ### 2. Download pretrained models
+StyleGallery is training-free but utilizes pretrained models of several existing projects. 
+For the basic running, we need to download SD 1.5 and dinov2.
