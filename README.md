@@ -30,3 +30,5 @@ The code has been tested on:
 ```bash
 conda create -n StyleGallery python=3.10
 conda activate StyleGallery
+
+### Pretrained models
