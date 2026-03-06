@@ -25,3 +25,7 @@ The code has been tested on:
 * Python 3.10.18
 * Pytorch 2.6.0
 * GeForce RTX 4090.
+
+### Create a Conda Environment
+```bash
+conda create -n StyleGallery python=3.10
