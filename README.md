@@ -24,7 +24,7 @@ The code has been tested on:
 * CUDA 12.6
 * Python 3.10.18
 * Pytorch 2.6.0
-* GeForce RTX 4090.
+* GeForce RTX 4090
 
 ### 1. Create a Conda Environment
 ```bash
