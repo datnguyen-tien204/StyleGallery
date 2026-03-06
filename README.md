@@ -56,3 +56,7 @@ python demo_hyper.py
 ```
 
 ## ⚙️ Gradio interface
+Run the following command to start the Gradio:
+```bash
+python gradio.py
+```
