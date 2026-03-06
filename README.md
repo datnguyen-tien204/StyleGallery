@@ -50,5 +50,9 @@ Try StyleGallery using the following commands:
 python demo.py
 ```
 We also support the combined use of SD1.5 and accelerated models ([LCM-SD1.5](https://huggingface.co/latent-consistency/lcm-lora-sdv1-5) and [Hyper-SD1.5](https://huggingface.co/ByteDance/Hyper-SD)) to improve time efficiency.
+```bash
+python demo_lcm.py
+python demo_hyper.py
+```
 
 ## ⚙️ Gradio interface
