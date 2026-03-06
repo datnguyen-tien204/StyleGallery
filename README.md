@@ -6,6 +6,9 @@ This is the official PyTorch implementation of the following publication:
 > *CVPR 2026* <br>
 > [Project Page]() | [Paper]()
 
-
-## 🚀 Introduction
+📖🚀
+## 📖 Introduction
 **TL;DR: StyleGallery is a training-free and semantic-aware framework to generate a high-quality stylized image from arbitrary image references.** 
+<div align="center">
+  <img src="assets/teaser.png" width="600">
+</div>a
