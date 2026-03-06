@@ -26,7 +26,7 @@ The code has been tested on:
 * Pytorch 2.6.0
 * GeForce RTX 4090.
 
-### Create a Conda Environment
+### 1. Create a Conda Environment
 ```bash
 # create env using conda
 conda create -n StyleGallery python=3.10
@@ -35,5 +35,6 @@ conda activate StyleGallery
 # install dependencies with pip
 # for Linux and Windows users
 pip install -r requirements.txt
+```
 
-### Pretrained models
+### 2. Download pretrained models
