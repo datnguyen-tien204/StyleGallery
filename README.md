@@ -45,5 +45,9 @@ StyleGallery also supports [SAM](https://github.com/facebookresearch/segment-any
 Please download them and place them in the ./pretrained_models folder.
 
 ## 🚀 Inference
+Try StyleGallery using the following commands:
+```bash
+python demo.py
+```
 
 ## ⚙️ Gradio interface
