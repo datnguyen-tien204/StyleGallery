@@ -39,9 +39,9 @@ pip install -r requirements.txt
 ### Download pretrained models
 StyleGallery is training-free but utilizes pretrained models of several existing projects. 
 
-For the basic running, we need to download [SD1.5](https://ai.gitee.com/hf-models/runwayml/stable-diffusion-v1-5/tree/main); [DINOv2](https://huggingface.co/facebook/dinov2-base) and [DepthAnything](https://github.com/LiheYoung/Depth-Anything), please set use_depth=True. 
+For the basic running, we need to download [SD1.5](https://ai.gitee.com/hf-models/runwayml/stable-diffusion-v1-5/tree/main); [DINOv2](https://huggingface.co/facebook/dinov2-base) and [DepthAnything](https://github.com/LiheYoung/Depth-Anything), please set --use_depth=True. 
 
-StyleGallery also supports [SAM](https://github.com/facebookresearch/segment-anything) for base mask generation, please set use_sam=True. 
+StyleGallery also supports [SAM](https://github.com/facebookresearch/segment-anything) for base mask generation, please set --use_sam=True. 
 
 Finally place SD1.5; DINOv2 and DepthAnything in the ./pretrained_models folder.
 
@@ -53,7 +53,7 @@ python demo.py
 
 We also support the combined use of SD1.5 and accelerated models ([LCM-SD1.5](https://huggingface.co/latent-consistency/lcm-lora-sdv1-5) and [Hyper-SD1.5](https://huggingface.co/ByteDance/Hyper-SD)) to improve time efficiency.
 ```bash
-# You can choose which model to use by setting mode=hyper or lcm. 
+# You can choose which model to use by setting --mode=hyper or lcm. 
 python demo_accelerate.py
 ```
 
