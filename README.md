@@ -2,7 +2,7 @@
 This is the official PyTorch implementation of the following publication: 
 
 > **"StyleGallery: Training-free and Semantic-aware Personalized Style Transfer from Arbitrary Image References".** <br>
-> Boyu He, Yunfan Ye, Chang Liu, Wuwei Shang, Liu Fang, Zhiping Cai <br>
+> Boyu He, Yunfan Ye, Chang Liu, Weishang Wu, Fang Liu, Zhiping Cai <br>
 > *CVPR 2026* <br>
 > [Project Page]() | [Paper]()
 
