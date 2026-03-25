@@ -290,31 +290,35 @@ class StyleGallery(StableDiffusionPipeline):
 
     def extract_semantic_features(self, image_path, mask, dinov2_model, processor):
         mask = mask.float()
-        enlarged_mask = F.interpolate(
-            mask.unsqueeze(0).unsqueeze(0),
-            size=(512, 512),
-            mode="nearest"
-        )
-        # [1, 1, 512, 512] -> [1, 256, 32, 32] -> [1, 256, 1024]
-        blocked_mask = enlarged_mask.unfold(2, 32, 32).unfold(3, 32, 32)
-        blocked_mask = blocked_mask.contiguous().view(1, -1, 32, 32)
-        blocked_mask = blocked_mask.view(1, 256, -1)
-
-        valid_counts = blocked_mask.view(1, 256, 1024).sum(dim=2)
-        keep_indices = (valid_counts > 10).squeeze()
-        new_mask = torch.zeros(256, dtype=torch.int)
-        new_mask[keep_indices] = 1
-        image = Image.open(image_path).convert('RGB')
 
         if hasattr(processor, 'size') and isinstance(processor.size, dict) and 'shortest_edge' in processor.size:
             size = processor.size['shortest_edge']
             processor.size = {'height': size, 'width': size}
 
+        image = Image.open(image_path).convert('RGB')
         inputs = processor(images=image, return_tensors="pt").to(device)
+
         with torch.no_grad():
             outputs = dinov2_model(**inputs)
-            # [1, 256, 768]
             tokens = outputs.last_hidden_state[:, 1:, :]
+
+        num_tokens = tokens.shape[1]
+        grid_size = int(num_tokens ** 0.5)
+        patch_size = 512 // grid_size
+
+        enlarged_mask = F.interpolate(
+            mask.unsqueeze(0).unsqueeze(0),
+            size=(512, 512),
+            mode="nearest"
+        )
+        blocked_mask = enlarged_mask.unfold(2, patch_size, patch_size).unfold(3, patch_size, patch_size)
+        blocked_mask = blocked_mask.contiguous().view(1, -1, patch_size * patch_size)
+
+        valid_counts = blocked_mask.sum(dim=2)
+        keep_indices = (valid_counts > 10).squeeze()
+        new_mask = torch.zeros(num_tokens, dtype=torch.int)
+        new_mask[keep_indices] = 1
+
         preserved_tokens = tokens[:, new_mask.bool(), :]
         return preserved_tokens.to(device)
 
