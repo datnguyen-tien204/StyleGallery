@@ -306,6 +306,10 @@ class StyleGallery(StableDiffusionPipeline):
         new_mask[keep_indices] = 1
         image = Image.open(image_path).convert('RGB')
 
+        if hasattr(processor, 'size') and isinstance(processor.size, dict) and 'shortest_edge' in processor.size:
+            size = processor.size['shortest_edge']
+            processor.size = {'height': size, 'width': size}
+
         inputs = processor(images=image, return_tensors="pt").to(device)
         with torch.no_grad():
             outputs = dinov2_model(**inputs)
@@ -892,4 +896,3 @@ class StyleGallery(StableDiffusionPipeline):
             torch.save(result_dict, data_path)
 
         return result_dict
-    
